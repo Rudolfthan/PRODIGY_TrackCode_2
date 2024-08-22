@@ -1,3 +1,4 @@
+package src;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -8,10 +9,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * This class is to make a guessing game, the user guesses a number from 0 to 200 
+ */
 public class GuessingGameGUI {
     private int numberToGuess;
     private int counter;
 
+    /**
+     * This method initiates the number to guess and make the frame for the gmae
+     * @param none
+     */
     public GuessingGameGUI() {
         Random r = new Random();
         numberToGuess = r.nextInt(200);
@@ -28,6 +36,10 @@ public class GuessingGameGUI {
         frame.setVisible(true);
     }
 
+    /**
+     * This method writes out the texts in the panel, the text the user sees
+     * @param panel
+     */
     private void placeComponents(JPanel panel) {
         panel.setLayout(null);
 
@@ -52,6 +64,10 @@ public class GuessingGameGUI {
         panel.add(attemptsLabel);
 
         guessButton.addActionListener(new ActionListener() {
+            /**
+             * This method tells the user whether the number they guessed is either too low, too high, if it's the corrext number
+             * and also checks if the user entered a valid number or not
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -76,6 +92,10 @@ public class GuessingGameGUI {
         });
     }
 
+    /**
+     * Main starts the game
+     * @param args
+     */
     public static void main(String[] args) {
         new GuessingGameGUI();
     }
