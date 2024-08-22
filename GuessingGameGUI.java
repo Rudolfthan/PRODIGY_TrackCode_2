@@ -1,7 +1,12 @@
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class GuessingGameGUI {
     private int numberToGuess;
@@ -14,7 +19,7 @@ public class GuessingGameGUI {
 
         JFrame frame = new JFrame("Guessing Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
+        frame.setSize(340, 180);
 
         JPanel panel = new JPanel();
         frame.add(panel);
@@ -26,16 +31,16 @@ public class GuessingGameGUI {
     private void placeComponents(JPanel panel) {
         panel.setLayout(null);
 
-        JLabel promptLabel = new JLabel("Enter a number:");
-        promptLabel.setBounds(10, 20, 120, 25);
+        JLabel promptLabel = new JLabel("Enter a number from 0 to 200:");
+        promptLabel.setBounds(10, 20, 200, 25);
         panel.add(promptLabel);
 
         JTextField numberInput = new JTextField(20);
-        numberInput.setBounds(140, 20, 165, 25);
+        numberInput.setBounds(240, 20, 65, 25);
         panel.add(numberInput);
 
         JButton guessButton = new JButton("Guess");
-        guessButton.setBounds(10, 50, 100, 25);
+        guessButton.setBounds(120, 50, 100, 25);
         panel.add(guessButton);
 
         JLabel feedbackLabel = new JLabel("");
@@ -55,8 +60,10 @@ public class GuessingGameGUI {
 
                     if (guess > numberToGuess) {
                         feedbackLabel.setText("Too High");
+                        attemptsLabel.setText("Attempts: " + counter);
                     } else if (guess < numberToGuess) {
                         feedbackLabel.setText("Too Low");
+                        attemptsLabel.setText("Attempts: " + counter);
                     } else {
                         feedbackLabel.setText("Correct number!!!!!!!!!!!!!!!");
                         attemptsLabel.setText("Attempts: " + counter);
